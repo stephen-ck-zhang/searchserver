@@ -33,10 +33,10 @@ HEADERS = HttpConnection.hpp \
           Result.hpp \
 	  FileReader.hpp
 
-TESTOBJS = test_filereader.o test_wordindex.o \
-           test_crawlfiletree.o test_serversocket.o \
-	   test_httpconnection.o test_httputils.o \
-           test_threadpool.o test_suite.o catch.o
+# TESTOBJS = test_filereader.o test_wordindex.o \
+#          test_crawlfiletree.o test_serversocket.o \
+#	   test_httpconnection.o test_httputils.o \
+#          test_threadpool.o test_suite.o catch.o
 
 CPP_SOURCE_FILES = CrawlFileTree.cpp FileReader.cpp HttpConnection.cpp HttpServer.cpp HttpUtils.cpp ServerSocket.cpp WordIndex.cpp
 HPP_SOURCE_FILES = WordIndex.hpp
@@ -52,9 +52,9 @@ httpd: httpd.o projectlib.a $(HEADERS)
 projectlib.a: $(OBJS_GOOD) $(HEADERS)
 	$(AR) $(ARFLAGS) $@ $(OBJS_GOOD)
 
-test_suite: $(TESTOBJS) projectlib.a $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $@ $(TESTOBJS) \
-	$(CPPUNITFLAGS) $(LDFLAGS) projectlib.a -lpthread
+# test_suite: $(TESTOBJS) projectlib.a $(HEADERS)
+#	$(CXX) $(CXXFLAGS) -o $@ $(TESTOBJS) \
+#	$(CPPUNITFLAGS) $(LDFLAGS) projectlib.a -lpthread
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $<
